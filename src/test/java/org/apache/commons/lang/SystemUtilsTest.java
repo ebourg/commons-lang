@@ -204,6 +204,10 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(1.3f, SystemUtils.toJavaVersionFloat("1.3.0 subset"), 0.000001f);
         // This used to return 0f in [lang] version 2.5:
         assertEquals(1.3f, SystemUtils.toJavaVersionFloat("XXX-1.3.x"), 0.000001f);
+        assertEquals(9f, SystemUtils.toJavaVersionFloat("9"), 0.000001f);
+        assertEquals(9.12f, SystemUtils.toJavaVersionFloat("9.1.2"), 0.000001f);
+        assertEquals(10f, SystemUtils.toJavaVersionFloat("10"), 0.000001f);
+        assertEquals(10.34f, SystemUtils.toJavaVersionFloat("10.3.4"), 0.000001f);
     }
 
     public void testJavaVersionAsInt() {
@@ -223,6 +227,10 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(131, SystemUtils.toJavaVersionInt("1.3.1 subset"));
         // This used to return 0f in [lang] version 2.5:
         assertEquals(130, SystemUtils.toJavaVersionInt("XXX-1.3.x"));
+        assertEquals(900, SystemUtils.toJavaVersionInt("9"));
+        assertEquals(912, SystemUtils.toJavaVersionInt("9.1.2"));
+        assertEquals(1000, SystemUtils.toJavaVersionInt("10"));
+        assertEquals(1034, SystemUtils.toJavaVersionInt("10.3.4"));
     }
 
     public void testJavaVersionAtLeastFloat() {
@@ -253,6 +261,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -262,6 +273,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.0";
         assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -271,6 +285,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.1";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -280,6 +297,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.2";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -289,6 +309,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.3.0";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -298,6 +321,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.3.1";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -307,6 +333,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.4.0";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -316,6 +345,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.4.1";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -325,6 +357,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.4.2";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -334,6 +369,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.5.0";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -343,6 +381,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.6.0";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -352,6 +393,9 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
         javaVersion = "1.7.0";
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
@@ -361,6 +405,45 @@ public class SystemUtilsTest extends TestCase {
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
         assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
         assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
+        javaVersion = "1.8.0";
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.2"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.3"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.4"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
+        javaVersion = "9";
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.2"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.3"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.4"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
+        javaVersion = "10";
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.0"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.1"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.2"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.3"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.4"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.5"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.6"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.7"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "1.8"));
+        assertEquals(false, SystemUtils.isJavaVersionMatch(javaVersion, "9"));
+        assertEquals(true, SystemUtils.isJavaVersionMatch(javaVersion, "10"));
     }
 
     public void testOSMatchesName() {
