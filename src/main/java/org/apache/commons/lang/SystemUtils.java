@@ -1393,6 +1393,8 @@ public class SystemUtils {
      * <ul>
      *  <li><code>1.2f</code> for JDK 1.2
      *  <li><code>1.31f</code> for JDK 1.3.1
+     *  <li><code>1.8f</code> for JDK 8
+     *  <li><code>9f</code> for JDK 9
      * </ul>
      * 
      * @return the version, for example 1.31f for JDK 1.3.1
@@ -1585,6 +1587,8 @@ public class SystemUtils {
      * <ul>
      * <li><code>1.2f</code> to test for Java 1.2</li>
      * <li><code>1.31f</code> to test for Java 1.3.1</li>
+     * <li><code>1.8f</code> to test for Java 8</li>
+     * <li><code>9f</code> to test for Java 9</li>
      * </ul>
      * 
      * @param requiredVersion
@@ -1606,6 +1610,8 @@ public class SystemUtils {
      * <ul>
      * <li><code>120</code> to test for Java 1.2 or greater</li>
      * <li><code>131</code> to test for Java 1.3.1 or greater</li>
+     * <li><code>180</code> to test for Java 8 or greater</li>
+     * <li><code>900</code> to test for Java 9 or greater</li>
      * </ul>
      * 
      * @param requiredVersion
@@ -1692,6 +1698,8 @@ public class SystemUtils {
      * <li><code>1.2f</code> for Java 1.2</li>
      * <li><code>1.31f</code> for Java 1.3.1</li>
      * <li><code>1.6f</code> for Java 1.6.0_20</li>
+     * <li><code>1.8f</code> for Java 1.8.0_144</li>
+     * <li><code>9.12f</code> for Java 9.1.2</li>
      * </ul>
      * 
      * <p>
@@ -1720,6 +1728,8 @@ public class SystemUtils {
      * <li><code>120</code> for Java 1.2</li>
      * <li><code>131</code> for Java 1.3.1</li>
      * <li><code>160</code> for Java 1.6.0_20</li>
+     * <li><code>180</code> for Java 1.8.0_144</li>
+     * <li><code>912</code> for Java 9.1.2</li>
      * </ul>
      * 
      * <p>
